@@ -1,0 +1,356 @@
+<!-- frontend/TYC.html -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Términos y Condiciones - Ponc</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-light: #f9f9f9;
+      --bg-dark: #1e1e1e;
+      --text-light: #222;
+      --text-dark: #f1f1f1;
+      --accent: #00b98b;
+      --hover-accent: #009578;
+      --highlight: rgba(0, 185, 139, 0.1);
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg-light);
+      color: var(--text-light);
+      padding: 40px 20px;
+      max-width: 850px;
+      margin: auto;
+      transition: background 0.4s, color 0.4s;
+      line-height: 1.7;
+    }
+
+    h1 {
+      font-size: 2.4rem;
+      margin-bottom: 12px;
+      color: var(--accent);
+      animation: fadeInDown 0.6s ease forwards;
+    }
+
+    h2 {
+      font-size: 1.5rem;
+      margin-top: 30px;
+      color: var(--accent);
+      position: relative;
+    }
+
+    h2::after {
+      content: '';
+      display: block;
+      width: 40px;
+      height: 3px;
+      background: var(--accent);
+      margin-top: 6px;
+      border-radius: 3px;
+    }
+
+    section {
+      margin-bottom: 24px;
+      background: rgba(0, 0, 0, 0.03);
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+      opacity: 0;
+      transform: scale(0.95);
+      transition: all 0.6s ease;
+    }
+
+    section.visible {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    ul {
+      padding-left: 20px;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: underline dotted;
+      transition: color 0.3s, text-decoration-color 0.3s;
+    }
+
+    a:hover {
+      color: var(--hover-accent);
+      text-decoration-color: var(--hover-accent);
+    }
+
+    .volver {
+      display: inline-block;
+      margin-top: 40px;
+      background: var(--accent);
+      color: white;
+      padding: 12px 20px;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: 600;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      transition: background 0.3s, transform 0.3s, box-shadow 0.3s;
+      animation: bounceIn 0.8s ease forwards;
+    }
+
+    .volver:hover {
+      background: var(--hover-accent);
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+    }
+
+    body.dark-mode {
+      background-color: var(--bg-dark);
+      color: var(--text-dark);
+    }
+
+    body.dark-mode section {
+      background: rgba(255, 255, 255, 0.05);
+      box-shadow: 0 2px 8px rgba(255,255,255,0.03);
+    }
+
+    body.dark-mode h1,
+    body.dark-mode h2 {
+      color: #4caf50;
+    }
+
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 1.8rem;
+      }
+
+      h2 {
+        font-size: 1.2rem;
+      }
+
+      .volver {
+        width: 100%;
+        text-align: center;
+      }
+    }
+
+    /* Animaciones personalizadas */
+    @keyframes fadeInDown {
+      0% {
+        opacity: 0;
+        transform: translateY(-30px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes bounceIn {
+      0% {
+        opacity: 0;
+        transform: scale(0.8);
+      }
+      60% {
+        opacity: 1;
+        transform: scale(1.05);
+      }
+      100% {
+        transform: scale(1);
+      }
+    }
+
+    .volver {
+      animation: bounce 1s ease infinite;
+      animation-iteration-count: 1; /* Solo una vez al cargar */
+    }
+
+    .volver:hover {
+      animation: bounce 0.5s ease infinite;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+    
+    section:hover {
+      background-color: rgba(0, 185, 139, 0.05);
+      transform: scale(1.01);
+    }
+
+    #matrix-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: -1;
+      width: 100%;
+      height: 100%;
+      background: black;
+      opacity: 0.07; /* transparencia para no molestar */
+      pointer-events: none; /* para que no interfiera con clicks */
+    }
+  </style>
+</head>
+<body>
+<canvas id="matrix-bg"></canvas>
+<h1>Términos y Condiciones de P.O.N.C</h1>
+<p><strong>Última actualización:</strong> 6 de julio de 2025</p>
+
+<section>
+  <h2>1. Uso del Servicio</h2>
+  <p>P.O.N.C es una plataforma de interacción basada en inteligencia artificial desarrollada con fines informativos, educativos, de entretenimiento y asistencia general. El usuario se compromete a utilizar la plataforma de forma responsable, evitando usos que violen leyes locales, nacionales o internacionales.</p>
+  <p>Está estrictamente prohibido utilizar el servicio para:</p>
+  <ul>
+    <li>Promover odio, violencia, discriminación o acoso.</li>
+    <li>Distribuir contenido ilegal o inapropiado.</li>
+    <li>Suplantar a otras personas o manipular información.</li>
+    <li>Automatizar accesos, ataques o abusos de la plataforma.</li>
+  </ul>
+</section>
+
+<section>
+  <h2>2. Propiedad Intelectual</h2>
+  <p>La interfaz, diseño visual, logotipo, nombre "P.O.N.C" y elementos relacionados con la identidad de la plataforma son propiedad de sus desarrolladores y están protegidos por leyes de propiedad intelectual.</p>
+  <p>El contenido generado por la IA (respuestas, textos, sugerencias, código, etc.) puede ser usado libremente por el usuario, siempre que no viole leyes ni derechos de terceros. Sin embargo, no se garantiza la originalidad ni la exclusividad de dicho contenido.</p>
+</section>
+
+<section>
+  <h2>3. Privacidad y Seguridad</h2>
+  <ul>
+    <li><strong>Mensajes:</strong> Las conversaciones pueden almacenarse de forma temporal y anónima para mejorar la calidad del servicio mediante técnicas de aprendizaje.</li>
+    <li><strong>Datos personales:</strong> No se solicita información confidencial. Si introduces datos sensibles por error, puedes eliminarlos manualmente y solicitar su borrado completo.</li>
+    <li><strong>Cookies:</strong> Se utilizan cookies técnicas para mantener tu sesión activa, gestionar preferencias como el modo oscuro, y conservar configuraciones personalizadas.</li>
+    <li><strong>Seguridad:</strong> Se emplean mecanismos básicos de seguridad. No obstante, el servicio no puede garantizar protección absoluta frente a vulnerabilidades o ataques externos.</li>
+  </ul>
+</section>
+
+<section>
+  <h2>4. Responsabilidad del Usuario</h2>
+  <p>El usuario acepta que es el único responsable del contenido que envía a través de la plataforma y de cómo interpreta las respuestas de la IA. El uso indebido puede derivar en restricciones temporales o permanentes del acceso a la cuenta.</p>
+  <p>Si se detectan usos malintencionados, la cuenta podrá ser suspendida sin previo aviso.</p>
+</section>
+
+<section>
+  <h2>5. Limitación de Responsabilidad</h2>
+  <p>P.O.N.C es un sistema automatizado de generación de texto. Las respuestas pueden contener errores, imprecisiones o información desactualizada. No deben tomarse como consejo profesional (médico, legal, financiero, psicológico u otros).</p>
+  <p>El usuario asume toda la responsabilidad por el uso que haga del contenido generado.</p>
+</section>
+
+<section>
+  <h2>6. Licencia de Uso</h2>
+  <p>El acceso a la plataforma no transfiere derechos de propiedad intelectual ni comerciales al usuario. Se concede una licencia limitada, revocable y no exclusiva para utilizar la aplicación de acuerdo con estos términos.</p>
+</section>
+
+<section>
+  <h2>7. Protección de Menores</h2>
+  <p>El uso por parte de menores debe estar supervisado por un adulto. Cualquier contenido considerado inapropiado para menores será bloqueado o moderado.</p>
+</section>
+
+<section>
+  <h2>8. Eliminación de Datos</h2>
+  <p>El usuario puede solicitar la eliminación de su cuenta y datos asociados escribiendo a <a href="mailto:mtvemo32@gmail.com">mtvemo32@gmail.com</a>. Esta solicitud será atendida en un plazo razonable.</p>
+</section>
+
+<section>
+  <h2>9. Cambios en los Términos</h2>
+  <p>Estos términos y condiciones pueden ser modificados en cualquier momento. En caso de cambios importantes, se notificará al usuario dentro de la plataforma o por correo electrónico si corresponde. El uso continuado del servicio implica la aceptación de los nuevos términos.</p>
+</section>
+
+<section>
+  <h2>10. Jurisdicción</h2>
+  <p>Estos términos se rigen por las leyes del país en el que opera el responsable de la plataforma (Perú). Cualquier disputa será resuelta ante las autoridades competentes de dicho país.</p>
+</section>
+
+<section>
+  <h2>11. Contacto</h2>
+  <p>Para dudas, reclamos, sugerencias o solicitudes relacionadas con el uso del servicio, puedes escribir a: <a href="mailto:mtvemo32@gmail.com">mtvemo32@gmail.com</a></p>
+</section>
+
+  <button class="volver" onclick="volverAlChat()">← Volver al chat</button>
+
+  <script>
+    // Animaciones al hacer scroll
+    const secciones = document.querySelectorAll("section");
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+        }
+      });
+    }, { threshold: 0.1 });
+
+    secciones.forEach(section => observer.observe(section));
+
+    async function volverAlChat() {
+      try {
+        const token = localStorage.getItem("token");
+        if (!token) {
+          alert("No tienes sesión activa.");
+          return;
+        }
+
+        const res = await fetch("/api/chat/ultimo-chat", {
+          headers: { "Authorization": `Bearer ${token}` }
+        });
+
+        if (!res.ok) throw new Error("No se pudo obtener el chat");
+
+        const data = await res.json();
+        const chatId = data.chat_id;
+
+        if (!chatId) throw new Error("Chat no encontrado");
+
+        // También lo guardamos si quieres reutilizarlo
+        localStorage.setItem("chat_id", chatId);
+        window.location.href = `/chat/${chatId}`;
+      } catch (err) {
+        console.error("Error al volver al chat:", err);
+        alert("No se encontró un chat para volver 😢");
+      }
+    }
+    // Fondo estilo "Matrix"
+    const canvas = document.getElementById('matrix-bg');
+    const ctx = canvas.getContext('2d');
+
+    // Ajuste de tamaño dinámico
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    window.addEventListener('resize', () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    });
+
+    // Caracteres a usar
+    const chars = '01ABCDEFGHIJKLMNOPQRSTUVXYZ$%&@#*あいうえおカキクケコ';
+    const fontSize = 16;
+    const columns = Math.floor(canvas.width / fontSize);
+    const drops = Array(columns).fill(1);
+
+    function drawMatrixRain() {
+      ctx.fillStyle = 'rgba(0, 0, 0, 0.1)';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      ctx.fillStyle = '#00ff94';
+      ctx.font = `${fontSize}px monospace`;
+
+      for (let i = 0; i < drops.length; i++) {
+        const text = chars[Math.floor(Math.random() * chars.length)];
+        ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+
+        if (drops[i] * fontSize > canvas.height || Math.random() > 0.975) {
+          drops[i] = 0;
+        }
+
+        drops[i]++;
+      }
+
+      requestAnimationFrame(drawMatrixRain);
+    }
+
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      document.body.classList.add("dark-mode");
+      drawMatrixRain();
+    }
+  </script>
+</body>
+</html>
